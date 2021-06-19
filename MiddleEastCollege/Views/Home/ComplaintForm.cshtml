@@ -1,0 +1,50 @@
+﻿@model MiddleEastCollege.Models.Complaint
+
+@{
+    ViewBag.Title = Resource.Complaint;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Tuple<long, string>> Types = ViewBag.Types;
+}
+<section class="s1">
+    <div class="appo">
+        <h1>@Resource.Complaint</h1>
+        @using (Html.BeginForm("ComplaintForm", "Home", FormMethod.Post))
+        {
+            @Html.HiddenFor(z => z.ComplaintID)
+            <div>
+                <label class="i-lab">@Resource.StudentName</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.StudentName, new { @class = "input", placeholder = Resource.StudentData })
+                @Html.ValidationMessageFor(x => x.StudentName, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div>
+                <label class="i-lab">@Resource.StudentID</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.StudentID, new { @class = "input", placeholder = Resource.StudentID })
+                @Html.ValidationMessageFor(x => x.StudentID, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div class="radio">
+                @foreach (var item in Types)
+                {
+                    <label class="container">
+                        @item.Item2
+                        <input type="radio" value="@item.Item1" name="ComplaintType" class="checkmark" />
+                    </label>
+                }
+
+                @Html.ValidationMessageFor(x => x.ComplaintType, null, new { @class = "text-danger", style = "color:red" })
+
+            </div>
+            <div>
+                <label class="i-lab">@Resource.Subject</label>
+                <label class="i-lab2">*</label>
+                @Html.TextAreaFor(z => z.Subject, new { @class = "input textarea", placeholder = Resource.Subject })
+                @Html.ValidationMessageFor(x => x.Subject, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div class="btn">
+                <input type="submit" value="@Resource.Submit" name="submit">
+                <a href="/home/index">@Resource.Cancel</a>
+            </div>
+        }
+    </div>
+</section>

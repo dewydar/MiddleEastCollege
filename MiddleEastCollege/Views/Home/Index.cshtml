@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = Resource.Home;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="s4">
+    <h1> @Resource.Title</h1>
+    <a href="/Home/AppointmentForm">
+        <div class="div-i i-1">
+            <div>
+                <img src="~/img/4172165-512.png" />
+            </div>
+            <h1>@Resource.Appointments</h1>
+        </div>
+    </a>
+    <a href="/Home/EnquiryForm">
+        <div class="div-i i-2">
+            <div><img src="~/img/2124273-512.png"></div>
+            <h1>@Resource.Enquiry</h1>
+        </div>
+    </a>
+    <a href="/Home/ComplaintForm">
+        <div class="div-i i-3">
+            <div><img src="~/img/3709751-512.png"></div>
+            <h1>@Resource.Complaints</h1>
+        </div>
+    </a>
+</div>

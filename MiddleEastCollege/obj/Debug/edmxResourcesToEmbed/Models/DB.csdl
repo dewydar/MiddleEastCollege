@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MiddleEastCollegeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MiddleEastCollegeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointment" EntityType="MiddleEastCollegeDBModel.Appointment" />
+    <EntitySet Name="Complaint" EntityType="MiddleEastCollegeDBModel.Complaint" />
+    <EntitySet Name="Enquiry" EntityType="MiddleEastCollegeDBModel.Enquiry" />
+    <EntitySet Name="MainMenu" EntityType="MiddleEastCollegeDBModel.MainMenu" />
+    <EntitySet Name="MenuItems" EntityType="MiddleEastCollegeDBModel.MenuItems" />
+    <EntitySet Name="sysdiagrams" EntityType="MiddleEastCollegeDBModel.sysdiagrams" />
+    <AssociationSet Name="FK_Complaint_MenuItems" Association="MiddleEastCollegeDBModel.FK_Complaint_MenuItems">
+      <End Role="MenuItems" EntitySet="MenuItems" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enquiry_MenuItems" Association="MiddleEastCollegeDBModel.FK_Enquiry_MenuItems">
+      <End Role="MenuItems" EntitySet="MenuItems" />
+      <End Role="Enquiry" EntitySet="Enquiry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuItems_MenuItems" Association="MiddleEastCollegeDBModel.FK_MenuItems_MenuItems">
+      <End Role="MainMenu" EntitySet="MainMenu" />
+      <End Role="MenuItems" EntitySet="MenuItems" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="AppointmentID" />
+    </Key>
+    <Property Name="AppointmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentData" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StudentID" Type="Int64" Nullable="false" />
+    <Property Name="Section" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Complaint">
+    <Key>
+      <PropertyRef Name="ComplaintID" />
+    </Key>
+    <Property Name="ComplaintID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StudentID" Type="Int64" Nullable="false" />
+    <Property Name="ComplaintType" Type="Int64" Nullable="false" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MenuItems" Relationship="MiddleEastCollegeDBModel.FK_Complaint_MenuItems" FromRole="Complaint" ToRole="MenuItems" />
+  </EntityType>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+    </Key>
+    <Property Name="EnquiryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StudentID" Type="Int64" Nullable="false" />
+    <Property Name="EnquiryType" Type="Int64" Nullable="false" />
+    <Property Name="Section" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MenuItems" Relationship="MiddleEastCollegeDBModel.FK_Enquiry_MenuItems" FromRole="Enquiry" ToRole="MenuItems" />
+  </EntityType>
+  <EntityType Name="MainMenu">
+    <Key>
+      <PropertyRef Name="MainMenuID" />
+    </Key>
+    <Property Name="MainMenuID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainMenuName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MenuItems" Relationship="MiddleEastCollegeDBModel.FK_MenuItems_MenuItems" FromRole="MainMenu" ToRole="MenuItems" />
+  </EntityType>
+  <EntityType Name="MenuItems">
+    <Key>
+      <PropertyRef Name="MenuItemID" />
+    </Key>
+    <Property Name="MenuItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuNameENG" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MenuNameAR" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MainMenuID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Complaint" Relationship="MiddleEastCollegeDBModel.FK_Complaint_MenuItems" FromRole="MenuItems" ToRole="Complaint" />
+    <NavigationProperty Name="Enquiry" Relationship="MiddleEastCollegeDBModel.FK_Enquiry_MenuItems" FromRole="MenuItems" ToRole="Enquiry" />
+    <NavigationProperty Name="MainMenu" Relationship="MiddleEastCollegeDBModel.FK_MenuItems_MenuItems" FromRole="MenuItems" ToRole="MainMenu" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Complaint_MenuItems">
+    <End Type="MiddleEastCollegeDBModel.MenuItems" Role="MenuItems" Multiplicity="1" />
+    <End Type="MiddleEastCollegeDBModel.Complaint" Role="Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuItems">
+        <PropertyRef Name="MenuItemID" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="ComplaintType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enquiry_MenuItems">
+    <End Type="MiddleEastCollegeDBModel.MenuItems" Role="MenuItems" Multiplicity="1" />
+    <End Type="MiddleEastCollegeDBModel.Enquiry" Role="Enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuItems">
+        <PropertyRef Name="MenuItemID" />
+      </Principal>
+      <Dependent Role="Enquiry">
+        <PropertyRef Name="EnquiryType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuItems_MenuItems">
+    <End Type="MiddleEastCollegeDBModel.MainMenu" Role="MainMenu" Multiplicity="1" />
+    <End Type="MiddleEastCollegeDBModel.MenuItems" Role="MenuItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainMenu">
+        <PropertyRef Name="MainMenuID" />
+      </Principal>
+      <Dependent Role="MenuItems">
+        <PropertyRef Name="MainMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

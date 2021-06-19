@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--------------- IE Compatiblaty --------------->
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <title> @Resource.Title </title>
+    <!---------- Load Files ---------->
+    <link href="~/CSS/style.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link rel="icon" src="~/img/icon.png">
+</head>
+<body>
+    <header>
+        <div class="header1">
+            <img src="~/img/logo.png" />
+        </div>
+    </header>
+    <section class="s1">
+        <div class="ul">
+            <ul>
+                <li>
+                    <a href="javascript:convertCulture('en')"><h1>@Resource.ENG</h1></a>
+                </li>
+                <li>
+                    <h1>/</h1>
+                </li>
+                <li>
+                    <a href="javascript:convertCulture('ar')"><h1> @Resource.Arabic</h1></a>
+                </li>
+                <li class="back">
+                    <a href="/Home/Index"><h1>@Resource.Home</h1></a>
+                </li>
+                <li>
+                    <a href=""><h1>@Resource.Exit</h1></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () { @Html.Raw(TempData["Message"].ToString()) });
+        </script>
+    }
+    <script>
+        var convertCulture = (name) => {
+            $.ajax({
+                url: '/Home/SetCulture',
+                method: 'POST',
+                data: { _culture: name }
+            }).done((data) => {
+                window.location.reload();
+            });
+        };
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

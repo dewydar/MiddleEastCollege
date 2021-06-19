@@ -1,0 +1,63 @@
+﻿@model MiddleEastCollege.Models.Appointment
+@{
+    ViewBag.Title = Resource.Appointment;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="s1">
+    <div class="appo">
+        <h1>@Resource.Appointment</h1>
+        @using (Html.BeginForm("AppointmentForm", "Home", FormMethod.Post))
+        {
+            @Html.HiddenFor(x=>x.AppointmentID)
+            <div>
+                <label class="i-lab">@Resource.StudentData</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.StudentData, new { @class = "input", placeholder = Resource.StudentData })
+                @Html.ValidationMessageFor(x => x.StudentData, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div>
+                <label class="i-lab">@Resource.StudentID</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.StudentID, new { @class = "input", placeholder = Resource.StudentID })
+                @Html.ValidationMessageFor(x => x.StudentID, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div>
+                <label class="i-lab">@Resource.Section</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.Section, new { @class = "input", placeholder = Resource.Section })
+                @Html.ValidationMessageFor(x => x.Section, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div>
+                <label class="i-lab">@Resource.TeacherName</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.TeacherName, new { @class = "input", placeholder = Resource.TeacherName })
+                @Html.ValidationMessageFor(x => x.TeacherName, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div>
+                <label class="i-lab">@Resource.Subject</label>
+                <label class="i-lab2">*</label>
+                @Html.TextBoxFor(z => z.Subject, new { @class = "input", placeholder = Resource.Subject })
+                @Html.ValidationMessageFor(x => x.Subject, null, new { @class = "text-danger" , style = "color:red" })
+            </div>
+            <div>
+                <label class="i-lab">@Resource.Date</label>
+                <label class="i-lab2">*</label>
+                <input type="date" id="Date" name="Date" class="input" />
+
+                @Html.ValidationMessageFor(x => x.Date, null, new { @class = "text-danger", style = "color:red" })
+            </div>
+            <div class="btn">
+                <input type="submit" value="@Resource.Submit" name="submit">
+                <a href="/home/index" class="cancel">@Resource.Cancel</a>
+            </div>
+        }
+    </div>
+</section>
+@section scripts{
+<script>
+    //$(document).ready(function () {
+    //    triggerDateTimePicker();
+
+    //})
+</script>
+}
