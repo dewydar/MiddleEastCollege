@@ -16,7 +16,7 @@ namespace MiddleEastCollege.Models
     {
         public long EnquiryID { get; set; }
         public string StudentName { get; set; }
-        public long StudentID { get; set; }
+        public string StudentID { get; set; }
         public long EnquiryType { get; set; }
         public string Section { get; set; }
         public string Subject { get; set; }

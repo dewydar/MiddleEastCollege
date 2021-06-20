@@ -16,7 +16,7 @@ namespace MiddleEastCollege.Models
     {
         public long AppointmentID { get; set; }
         public string StudentData { get; set; }
-        public long StudentID { get; set; }
+        public string StudentID { get; set; }
         public string Section { get; set; }
         public string TeacherName { get; set; }
         public string Subject { get; set; }

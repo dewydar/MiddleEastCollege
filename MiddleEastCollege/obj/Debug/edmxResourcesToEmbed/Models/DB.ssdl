@@ -6,7 +6,7 @@
     </Key>
     <Property Name="AppointmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentData" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="StudentID" Type="bigint" Nullable="false" />
+    <Property Name="StudentID" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Section" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="TeacherName" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Subject" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -17,8 +17,8 @@
       <PropertyRef Name="ComplaintID" />
     </Key>
     <Property Name="ComplaintID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StudentName" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="StudentID" Type="bigint" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="200" />
+    <Property Name="StudentID" Type="nvarchar" MaxLength="200" />
     <Property Name="ComplaintType" Type="bigint" Nullable="false" />
     <Property Name="Subject" Type="nvarchar" MaxLength="4000" Nullable="false" />
   </EntityType>
@@ -28,7 +28,7 @@
     </Key>
     <Property Name="EnquiryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentName" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="StudentID" Type="bigint" Nullable="false" />
+    <Property Name="StudentID" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="EnquiryType" Type="bigint" Nullable="false" />
     <Property Name="Section" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Subject" Type="nvarchar" MaxLength="4000" Nullable="false" />

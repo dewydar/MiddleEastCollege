@@ -11,7 +11,7 @@
           </Key>
           <Property Name="AppointmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StudentData" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="StudentID" Type="bigint" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Section" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="TeacherName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Subject" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -22,8 +22,8 @@
             <PropertyRef Name="ComplaintID" />
           </Key>
           <Property Name="ComplaintID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StudentName" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="StudentID" Type="bigint" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="200" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="200" />
           <Property Name="ComplaintType" Type="bigint" Nullable="false" />
           <Property Name="Subject" Type="nvarchar" MaxLength="4000" Nullable="false" />
         </EntityType>
@@ -33,7 +33,7 @@
           </Key>
           <Property Name="EnquiryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StudentName" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="StudentID" Type="bigint" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="EnquiryType" Type="bigint" Nullable="false" />
           <Property Name="Section" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Subject" Type="nvarchar" MaxLength="4000" Nullable="false" />
@@ -150,7 +150,7 @@
           </Key>
           <Property Name="AppointmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentData" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="StudentID" Type="Int64" Nullable="false" />
+          <Property Name="StudentID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Section" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Subject" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -161,8 +161,8 @@
             <PropertyRef Name="ComplaintID" />
           </Key>
           <Property Name="ComplaintID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="StudentID" Type="Int64" Nullable="false" />
+          <Property Name="StudentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StudentID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ComplaintType" Type="Int64" Nullable="false" />
           <Property Name="Subject" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MenuItems" Relationship="MiddleEastCollegeDBModel.FK_Complaint_MenuItems" FromRole="Complaint" ToRole="MenuItems" />
@@ -173,7 +173,7 @@
           </Key>
           <Property Name="EnquiryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="StudentID" Type="Int64" Nullable="false" />
+          <Property Name="StudentID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="EnquiryType" Type="Int64" Nullable="false" />
           <Property Name="Section" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Subject" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
@@ -245,7 +245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

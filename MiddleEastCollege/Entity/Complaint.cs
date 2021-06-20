@@ -13,11 +13,9 @@ namespace MiddleEastCollege.Models
     public class ComplaintMetaData
     {
         [Display(Name = "StudentName", ResourceType = typeof(Resource))]
-        [Required]
         [MaxLength(200)]
         public string StudentName { get; set; }
         [Display(Name = "StudentID", ResourceType = typeof(Resource))]
-        [Required]
         public long StudentID { get; set; }
         [Display(Name = "ComplaintType", ResourceType = typeof(Resource))]
         [Required]

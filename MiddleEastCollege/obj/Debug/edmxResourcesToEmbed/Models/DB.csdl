@@ -26,7 +26,7 @@
     </Key>
     <Property Name="AppointmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudentData" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="StudentID" Type="Int64" Nullable="false" />
+    <Property Name="StudentID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Section" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Subject" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -37,8 +37,8 @@
       <PropertyRef Name="ComplaintID" />
     </Key>
     <Property Name="ComplaintID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StudentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="StudentID" Type="Int64" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StudentID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="ComplaintType" Type="Int64" Nullable="false" />
     <Property Name="Subject" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="MenuItems" Relationship="MiddleEastCollegeDBModel.FK_Complaint_MenuItems" FromRole="Complaint" ToRole="MenuItems" />
@@ -49,7 +49,7 @@
     </Key>
     <Property Name="EnquiryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="StudentID" Type="Int64" Nullable="false" />
+    <Property Name="StudentID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="EnquiryType" Type="Int64" Nullable="false" />
     <Property Name="Section" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Subject" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />

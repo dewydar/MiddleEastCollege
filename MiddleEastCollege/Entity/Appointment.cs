@@ -18,7 +18,7 @@ namespace MiddleEastCollege.Models
         public string StudentData { get; set; }
         [Display(Name = "StudentID", ResourceType = typeof(Resource))]
         [Required]
-        public long StudentID { get; set; }
+        public string StudentID { get; set; }
         [Display(Name = "Section", ResourceType = typeof(Resource))]
         [Required]
         [MaxLength(200)]

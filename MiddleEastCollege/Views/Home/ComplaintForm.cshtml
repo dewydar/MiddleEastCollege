@@ -13,13 +13,11 @@
             @Html.HiddenFor(z => z.ComplaintID)
             <div>
                 <label class="i-lab">@Resource.StudentName</label>
-                <label class="i-lab2">*</label>
                 @Html.TextBoxFor(z => z.StudentName, new { @class = "input", placeholder = Resource.StudentData })
                 @Html.ValidationMessageFor(x => x.StudentName, null, new { @class = "text-danger", style = "color:red" })
             </div>
             <div>
                 <label class="i-lab">@Resource.StudentID</label>
-                <label class="i-lab2">*</label>
                 @Html.TextBoxFor(z => z.StudentID, new { @class = "input", placeholder = Resource.StudentID })
                 @Html.ValidationMessageFor(x => x.StudentID, null, new { @class = "text-danger", style = "color:red" })
             </div>
