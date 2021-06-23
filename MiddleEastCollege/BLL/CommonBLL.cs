@@ -1,6 +1,7 @@
 ﻿using MiddleEastCollege.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -29,9 +30,23 @@ namespace MiddleEastCollege.BLL
                     return false;
                 }
             }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    messageTitle = "Entity of type " + eve.Entry.Entity.GetType().Name + " in state " + eve.Entry.State
+                        + " has the following validation errors:";
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        message = message + "- Property: "+ ve.PropertyName + ", Error: "+ ve.ErrorMessage;
+                    }
+                }
+                return false;
+            }
             catch (Exception ex)
             {
-                message = ex.Message;
+                messageTitle = Resource.Error;
+                message = ex.InnerException.Message;
                 return false;
             }
         }
